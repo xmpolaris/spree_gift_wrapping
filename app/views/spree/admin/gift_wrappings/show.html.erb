@@ -1,0 +1,42 @@
+<% content_for :page_title do %>
+  <%= t(:gift_wrapping) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <div class="toolbar" data-hook="toolbar">
+    <ul class="actions header-action-links inline-menu">
+      <li id="new_gift_wrapping_link">
+        <%= link_to_edit @gift_wrapping, { :remote => true, :icon => 'icon-edit', :id => 'admin_edit_gift_wrapping' } %>
+      </li>
+    </ul>
+  </div>
+<% end %>
+
+<div data-hook="gift_wrapping_show" itemscope itemtype="http://schema.org/Product">
+  <% @body_id = 'gift_wrapping_details' %>
+
+  <div class="columns six alpha" data-hook="">
+    <div class="row" data-hook="">
+      <div id="gift-wrapping-image" data-hook="gift_wrapping_image">
+        <div id="main-image" data-hook>
+          <% if @gift_wrapping.image %>
+            <%= image_tag @gift_wrapping.image.attachment.url(:large), :itemprop => "image" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" data-hook="">
+      <div id="gift-wrapping-calculation" data-hook="gift_wrapping_calculation">
+        <label>Calculator: </label>
+        <%= @gift_wrapping.calculator.description %>
+      </div>
+    </div>
+
+    <div class="row" data-hook="">
+      <div id="gift-wrapping-description" data-hook="gift_wrapping_description">
+        <%= @gift_wrapping.description %>
+      </div>
+    </div>
+  </div>
+</div>

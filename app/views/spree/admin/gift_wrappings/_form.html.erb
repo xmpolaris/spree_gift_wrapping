@@ -1,0 +1,29 @@
+<div data-hook="admin_gift_wrapping_form_fields">
+
+  <div class="alpha twelve columns" data-hook="admin_gift_wrapping_form">
+    <%= f.field_container :description do %>
+      <%= f.label :description, raw(t(:description) + content_tag(:span, ' *', :class => 'required')) %>
+      <%= f.text_field :description, :class => 'fullwidth title' %>
+      <%= f.error_message_on :description %>
+    <% end %>
+
+    <div data-hook="admin_gift_wrapping_form_calculator_fields" class="omega six columns">
+      <fieldset id="image_fields" data-hook class="no-border-bottom">
+        <legend align="center"><%= t(:image) %></legend>
+        <div class="field">
+          <%= f.fields_for :image do |image_form| %>
+            <%= image_form.label t(:image) %><br>
+            <%= image_form.file_field :attachment %>
+          <% end %>
+          <%= f.error_message_on :image %>
+        </div>
+      </fieldset>
+    </div>
+
+    <div data-hook="admin_gift_wrapping_form_calculator_fields" class="omega six columns">
+      <%= render :partial => 'spree/admin/shared/calculator_fields', :locals => { :f => f } %>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+</div>

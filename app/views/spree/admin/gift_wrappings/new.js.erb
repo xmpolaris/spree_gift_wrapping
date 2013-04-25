@@ -1,0 +1,3 @@
+$("#new_gift_wrapping").html('<%= escape_javascript(render :template => "spree/admin/gift_wrappings/new", :formats => [:html], :handlers => [:erb]) %>');
+handle_date_picker_fields();
+$("#admin_new_gift_wrapping").parent().hide();

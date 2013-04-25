@@ -1,0 +1,51 @@
+<fieldset id='gift_wrapping_method' data-hook>
+  <legend align="center"><%= t(:gift_wrapping) %></legend>
+  <div class="inner" data-hook="gift_wrapping_method_inner">
+    <div id="methods">
+      <table style="width: 100%">
+        <colgroup>
+          <col style="width: 15%">
+          <col style="width: 15%">
+          <col style="width: 60%">
+          <col style="width: 10%">
+        </colgroup>
+        <thead>
+        <tr>
+          <th>Select</th>
+          <th>Preview</th>
+          <th>Description</th>
+          <th>Price</th>
+        </tr>
+        </thead>
+
+        <% @order.gift_wrapping_hash.each do |wrapping_method| %>
+          <tr>
+            <td><%= radio_button(:order, :gift_wrapping_id, wrapping_method[:id]) %></td>
+            <td><%= image_tag wrapping_method.image %></td>
+            <td><%= wrapping_method.description %></td>
+            <td><%= wrapping_method.display_price %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td><%= radio_button(:order, :gift_wrapping_id, nil) %></td>
+          <td></td>
+          <td>None</td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+    <!-- Share wrapping special instructions with shipping -->
+    <% if Spree::Config[:wrapping_instructions] && @order.gift_wrapping_hash.present? %>
+      <p id="minstrs" data-hook>
+        <%= form.label :special_instructions, t(:wrapping_instructions) %><br />
+        <%= form.text_area :special_instructions, :cols => 40, :rows => 7 %>
+      </p>
+    <% end %>
+  </div>
+</fieldset>
+
+<br />
+
+<div class="form-buttons" data-hook="buttons">
+  <%= submit_tag t(:save_and_continue), :class => 'continue button primary' %>
+</div>

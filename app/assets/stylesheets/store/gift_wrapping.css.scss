@@ -1,0 +1,22 @@
+@import "store/variables.css.scss";
+
+#gift_wrapping_method {
+  margin-top: 10px;
+  border: $default_border;
+  padding: 10px;
+
+  legend {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: $base_font_size + 2;
+    color: $link_text_color;
+    padding: 5px;
+    margin-left: 15px;
+  }
+
+  table {
+    text-align: center;
+    font-weight: bold;
+    font-size: $base_font_size + 2;
+  }
+}
