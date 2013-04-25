@@ -21,7 +21,7 @@
         <% @order.gift_wrapping_hash.each do |wrapping_method| %>
           <tr>
             <td><%= radio_button(:order, :gift_wrapping_id, wrapping_method[:id]) %></td>
-            <td><%= image_tag wrapping_method.image %></td>
+            <td><%= image_tag(wrapping_method.image) if wrapping_method.image %></td>
             <td><%= wrapping_method.description %></td>
             <td><%= wrapping_method.display_price %></td>
           </tr>
